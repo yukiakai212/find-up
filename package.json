@@ -1,0 +1,66 @@
+{
+  "name": "@yukiakai/find-up",
+  "version": "1.0.0",
+  "description": "A flexible find-up implementation supporting string, RegExp, CJS/ESM dual build, and custom matcher.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.js",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "scripts": {
+    "test": "npm run build && npx vitest run --reporter verbose --coverage",
+    "format": "prettier --write **/*.{js,ts}",
+    "format:check": "prettier --check **/*.{js,ts}",
+    "lint": "eslint src/**/*.ts",
+    "build": "npx tsup"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "keywords": [
+    "find-up",
+    "find up",
+    "resolve",
+    "file",
+    "folder",
+    "regex",
+    "cjs",
+    "esm",
+    "typescript",
+    "matcher"
+  ],
+  "author": "Yuki_akai",
+  "homepage": "https://github.com/yukiakai212/find-up",
+  "engines": {
+    "node": ">= 16"
+  },
+  "maintainers": [
+    {
+      "name": "Yuki_akai",
+      "homepage": "https://github.com/yukiakai212"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yukiakai212/find-up.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yukiakai212/find-up/issues"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.30.1",
+    "@types/node": "^24.0.10",
+    "@vitest/coverage-v8": "^3.2.4",
+    "dotenv": "^17.0.1",
+    "eslint": "^9.30.0",
+    "prettier": "^3.6.2",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.35.1",
+    "vitest": "^3.2.4"
+  }
+}

@@ -1,0 +1,134 @@
+# @yukiakai/find-up
+
+[![NPM Version][npm-version-image]][npm-url]
+[![NPM Downloads][npm-downloads-image]][npm-downloads-url]
+
+[![Build Status][github-build-url]][github-url]
+[![codecov][codecov-image]][codecov-url]
+
+Find the first file matching a given pattern in the current directory or the nearest ancestor directory, with support for **both CommonJS and ESM**, and extended matching capabilities including `RegExp`, symlink control, and custom matchers.
+
+> 💡 Useful for finding files or folders (like `package.json`, `.git`, or config files) by walking upward from a starting directory.
+
+---
+
+## 📦 Installation
+
+```bash
+npm install @yukiakai/find-up
+```
+
+Works with both `require()` and `import` thanks to dual CJS/ESM build.
+
+---
+
+## 🚀 Usage
+
+### Basic usage
+
+```ts
+import { findUp } from '@yukiakai/find-up'
+
+// Find 'package.json' starting from current directory and walking upward
+const path = findUp('package.json')
+console.log(path)
+```
+
+### Match multiple names
+
+```ts
+findUp(['pnpm-lock.yaml', 'yarn.lock', 'package-lock.json'])
+```
+
+### Match using RegExp
+
+```ts
+findUp(/^config\..*\.json$/)
+```
+
+### Match folders instead of files
+
+```ts
+findUp('node_modules', { type: 'folder' })
+```
+
+### Custom matcher callback
+
+```ts
+findUp('package.json', {
+  matcher: (path) => {
+    console.log('Walking:', path)
+  }
+})
+```
+
+---
+
+## 🧠 API
+
+```ts
+findUp(
+  name: string | RegExp | (string | RegExp)[],
+  options?: FindUpOptions
+): string | undefined
+```
+
+### Options
+
+| Name           | Type                              | Default             | Description                                 |
+|----------------|-----------------------------------|---------------------|-------------------------------------------- |
+| `basedir`      | `string`                          | `process.cwd()`     | Directory to start searching from           |
+| `matcher`      | `(path: string) => ()`            | –                   | Custom callback per directory.              |
+| `type`         | `'file' | 'folder'`               | `'file'`            | Whether to match files or directories       |
+| `allowSymlinks`| `boolean`                         | `true`              | Whether to allow matching symlinks          |
+| `stopAt`       | `string | string[]`               | -                   |                                             |
+
+---
+
+## ✅ Features
+
+- ✅ Supports both **CommonJS** and **ESM**
+- ✅ Supports `string`, `string[]`, `RegExp`, `RegExp[]`
+- ✅ Supports stop at
+- ✅ File or folder matching
+- ✅ Optional symlink filtering
+- ✅ TypeScript types included
+
+---
+
+## 🧪 Example: Find `.git` folder
+
+```ts
+const gitFolder = findUp('.git', { type: 'folder' })
+if (gitFolder) {
+  console.log('Found .git at:', gitFolder)
+}
+```
+
+---
+
+## 🔍 Comparison
+
+| Feature                            | @yukiakai/find-up | find-up       | findup-sync   |
+|------------------------------------|-------------------|---------------|---------------|
+| Supports CJS & ESM                 | ✅                | ❌ (ESM only) | ✅ (CJS only) |
+| Supports RegExp                    | ✅                | ❌            | ✅            |
+| Supports array of names/patterns   | ✅                | ✅            | ✅            |
+| File/folder type filtering         | ✅                | ✅            | ❌            |
+| Supports Symlinks                  | ✅                | ✅            | ❌            |
+| Zero dependency                    | ✅                | ❌            | ❌            |
+
+---
+
+## 📜 License
+
+MIT © [yukiakai](https://github.com/yukiakai212)
+
+[npm-downloads-image]: https://badgen.net/npm/dm/@yukiakai/find-up
+[npm-downloads-url]: https://www.npmjs.com/package/@yukiakai/find-up
+[npm-url]: https://www.npmjs.com/package/@yukiakai/find-up
+[npm-version-image]: https://badgen.net/npm/v/@yukiakai/find-up
+[github-build-url]: https://github.com/yukiakai212/find-up/actions/workflows/build.yml/badge.svg
+[github-url]: https://github.com/yukiakai212/find-up/
+[codecov-image]: https://codecov.io/gh/yukiakai212/find-up/branch/main/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/yukiakai212/find-up
