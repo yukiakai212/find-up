@@ -75,13 +75,13 @@ findUp(
 
 ### Options
 
-| Name           | Type                              | Default             | Description                                 |
-|----------------|-----------------------------------|---------------------|-------------------------------------------- |
-| `basedir`      | `string`                          | `process.cwd()`     | Directory to start searching from           |
-| `matcher`      | `(path: string) => ()`            | –                   | Custom callback per directory.              |
-| `type`         | `file | folder`                   | `file`              | Whether to match files or directories       |
-| `allowSymlinks`| `boolean`                         | `true`              | Whether to allow matching symlinks          |
-| `stopAt`       | `string | string[]`               | `-`                 |                                             |
+| Name           | Type                              | Default             | Description                                    |
+|----------------|-----------------------------------|---------------------|------------------------------------------------|
+| `basedir`      | `string`                          | `process.cwd()`     | Directory to start searching from              |
+| `matcher`      | `(path: string) => ()`            | –                   | Custom callback per directory.                 |
+| `type`         | `file \| folder`                  | `file`              | Whether to match files or directories          |
+| `allowSymlinks`| `boolean`                         | `true`              | Whether to allow matching symlinks             |
+| `stopAt`       | `string \| string[]`              | -                   | Stop searching when encountering these folders |
 
 ---
 
