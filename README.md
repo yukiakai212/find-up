@@ -79,9 +79,9 @@ findUp(
 |----------------|-----------------------------------|---------------------|-------------------------------------------- |
 | `basedir`      | `string`                          | `process.cwd()`     | Directory to start searching from           |
 | `matcher`      | `(path: string) => ()`            | –                   | Custom callback per directory.              |
-| `type`         | `'file' | 'folder'`               | `'file'`            | Whether to match files or directories       |
+| `type`         | `file | folder`                   | `file`              | Whether to match files or directories       |
 | `allowSymlinks`| `boolean`                         | `true`              | Whether to allow matching symlinks          |
-| `stopAt`       | `string | string[]`               | -                   |                                             |
+| `stopAt`       | `string | string[]`               | `-`                 |                                             |
 
 ---
 
