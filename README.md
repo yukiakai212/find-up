@@ -124,6 +124,13 @@ if (gitFolder) {
 | Supports Symlinks                  | ✅                | ✅            | ❌            |
 | Zero dependency                    | ✅                | ❌            | ❌            |
 
+
+---
+
+## 📦 Changelog
+
+See full release notes in [CHANGELOG.md][changelog-url]
+
 ---
 
 ## 📜 License
@@ -138,3 +145,4 @@ MIT © [yukiakai](https://github.com/yukiakai212)
 [github-url]: https://github.com/yukiakai212/find-up/
 [codecov-image]: https://codecov.io/gh/yukiakai212/find-up/branch/main/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/yukiakai212/find-up
+[changelog-url]: https://github.com/yukiakai212/find-up/blob/main/CHANGELOG.md
