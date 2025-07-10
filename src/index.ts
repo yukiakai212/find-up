@@ -15,7 +15,7 @@ function matchName(
   expect: string | RegExp,
   type: 'file' | 'folder',
   allowSymlinks,
-): boolean {
+): string | undefined {
   for (let name of target) {
     try {
       const fullPath = path.join(base, name);
@@ -27,7 +27,7 @@ function matchName(
       const stats = fs.statSync(realPath);
       if (type === 'file' && !stats.isFile()) continue;
       if (type === 'folder' && !stats.isDirectory()) continue;
-      if (name === expect || (expect instanceof RegExp && expect.test(name))) return true;
+      if (name === expect || (expect instanceof RegExp && expect.test(name))) return name;
     } catch {
       //ok
     }
@@ -63,8 +63,9 @@ export function findUp(
 
   while (true) {
     const entries = fs.readdirSync(dir);
-    if (matchName(dir, entries, expect, type, allowSymlinks)) {
-      if (matcher && !matcher(dir)) {
+    const found = matchName(dir, entries, expect, type, allowSymlinks);
+    if (found) {
+      if (matcher && !matcher(path.join(dir, found))) {
         //continue search
       } else {
         return dir;
