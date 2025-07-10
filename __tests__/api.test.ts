@@ -31,7 +31,7 @@ describe.each([
     expect(result).toBe(undefined);
   });
 
-  it('should respect custom matcher', () => {
+  it('should respect custom matcher (stop)', () => {
     const matched = [];
     const result = lib.findUp('package.json', {
       basedir: import.meta.dirname,
@@ -42,5 +42,14 @@ describe.each([
     });
     expect(matched.length).toBeGreaterThan(0);
     expect(result).toBeTruthy();
+  });
+  it('should respect custom matcher (continue)', () => {
+    const result = lib.findUp('package.json', {
+      basedir: import.meta.dirname,
+      matcher: (path) => {
+        return false;
+      },
+    });
+    expect(result).toBe(undefined);
   });
 });

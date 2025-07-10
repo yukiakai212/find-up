@@ -63,11 +63,13 @@ export function findUp(
 
   while (true) {
     const entries = fs.readdirSync(dir);
-    matcher?.(dir);
     if (matchName(dir, entries, expect, type, allowSymlinks)) {
-      return dir;
+      if (matcher && !matcher(dir)) {
+        //continue search
+      } else {
+        return dir;
+      }
     }
-
     const oldDir = dir;
     dir = path.join(dir, '..');
     if (dir === oldDir || stopAtName.includes(path.basename(dir))) break;
