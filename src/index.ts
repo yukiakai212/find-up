@@ -47,6 +47,7 @@ export function findUp(
     type = 'file',
     allowSymlinks = true,
     stopAt = [],
+    includeMatchedPath = false,
   } = options;
 
   if (name instanceof Array) {
@@ -68,7 +69,7 @@ export function findUp(
       if (matcher && !matcher(path.join(dir, found))) {
         //continue search
       } else {
-        return dir;
+        return includeMatchedPath ? path.join(dir, found) : dir;
       }
     }
     const oldDir = dir;

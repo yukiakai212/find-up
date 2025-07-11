@@ -49,7 +49,12 @@ findUp(/^config\..*\.json$/)
 ### Match folders instead of files
 
 ```ts
-findUp('node_modules', { type: 'folder' })
+// Return full path including matched folder name
+findUp(['node_modules', 'dist'], {
+  type: 'folder',
+  includeMatchedPath: true
+})
+// → /root/project/node_modules
 ```
 
 ### Custom matcher callback
@@ -79,13 +84,14 @@ findUp(
 
 ### Options
 
-| Name           | Type                              | Default             | Description                                                 |
-|----------------|-----------------------------------|---------------------|-------------------------------------------------------------|
-| `basedir`      | `string`                          | `process.cwd()`     | Directory to start searching from                           |
-| `matcher`      | `(path: string) => ()`            | –                   | Called when a matching file is found. Return false to skip. |
-| `type`         | `file \| folder`                  | `file`              | Whether to match files or directories                       |
-| `allowSymlinks`| `boolean`                         | `true`              | Whether to allow matching symlinks                          |
-| `stopAt`       | `string \| string[]`              | -                   | Stop searching when encountering these folders              |
+| Name                 | Type                              | Default             | Description                                                 |
+|----------------------|-----------------------------------|---------------------|-------------------------------------------------------------|
+| `basedir`            | `string`                          | `process.cwd()`     | Directory to start searching from                           |
+| `matcher`            | `(path: string) => ()`            | –                   | Called when a matching file is found. Return false to skip. |
+| `type`               | `file \| folder`                  | `file`              | Whether to match files or directories                       |
+| `includeMatchedPath` | `boolean`                         | `false`             | If `true`, returns full path including the matched name     |
+| `allowSymlinks`      | `boolean`                         | `true`              | Whether to allow matching symlinks                          |
+| `stopAt`             | `string \| string[]`              | -                   | Stop searching when encountering these folders              |
 
 ---
 
@@ -98,6 +104,9 @@ findUp(
 - ✅ Optional symlink filtering
 - ✅ **Custom matcher callback** — inspect file content, metadata, or path before accepting match
 - ✅ TypeScript types included
+- ✅ Optional: return full matched path (includeMatchedPath)
+
+
 
 ---
 
