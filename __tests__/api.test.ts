@@ -20,6 +20,13 @@ describe.each([
 
     expect(result).toBeTruthy();
   });
+  it('should returns full path including the matched name', () => {
+    const result = lib.findUp(['package.json'], {
+      basedir: import.meta.dirname,
+      includeMatchedPath: true,
+    });
+    expect(result.endsWith('package.json')).toBe(true);
+  });
 
   it('should support regex name match', () => {
     const result = lib.findUp(/package\.json$/, { basedir: import.meta.dirname });

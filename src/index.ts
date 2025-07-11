@@ -7,6 +7,7 @@ export interface FindUpOptions {
   type?: 'file' | 'folder';
   allowSymlinks?: boolean;
   stopAt?: string | string[];
+  includeMatchedPath?: boolean;
 }
 
 function matchName(
