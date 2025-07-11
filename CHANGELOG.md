@@ -1,5 +1,11 @@
 # @yukiakai/find-up
 
+## 1.1.2
+
+### Patch Changes
+
+- df58a16: add options includeMatchedPath
+
 ## 1.1.1
 
 ### Patch Changes
