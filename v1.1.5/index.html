@@ -1,0 +1,157 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="./"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>@yukiakai/find-up</title><meta name="description" content="Documentation for @yukiakai/find-up"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="index.html" class="title">@yukiakai/find-up</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h1>@yukiakai/find-up</h1></div><div class="tsd-panel tsd-typography"><h1 id="yukiakaifind-up" class="tsd-anchor-link">@yukiakai/find-up<a href="#yukiakaifind-up" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><p><a href="https://www.npmjs.com/package/@yukiakai/find-up"><img src="https://badgen.net/npm/v/@yukiakai/find-up" alt="NPM Version"></a>
+<a href="https://www.npmjs.com/package/@yukiakai/find-up"><img src="https://badgen.net/npm/dm/@yukiakai/find-up" alt="NPM Downloads"></a></p>
+<p><a href="https://github.com/yukiakai212/find-up/"><img src="https://github.com/yukiakai212/find-up/actions/workflows/build.yml/badge.svg" alt="Build Status"></a>
+<a href="https://codecov.io/gh/yukiakai212/find-up"><img src="https://codecov.io/gh/yukiakai212/find-up/branch/main/graph/badge.svg" alt="codecov"></a></p>
+<p>Find the first file matching a given pattern in the current directory or the nearest ancestor directory, with support for <strong>both CommonJS and ESM</strong>, and extended matching capabilities including <code>RegExp</code>, symlink control, and custom matchers callback.</p>
+<blockquote>
+<p>💡 Useful for finding files or folders (like <code>package.json</code>, <code>.git</code>, or config files) by walking upward from a starting directory.</p>
+</blockquote>
+<hr>
+<h2 id="📦-installation" class="tsd-anchor-link">📦 Installation<a href="#📦-installation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><pre><code class="bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">install</span><span class="hl-1"> </span><span class="hl-2">@yukiakai/find-up</span>
+</code><button type="button">Copy</button></pre>
+
+<p>Works with both <code>require()</code> and <code>import</code> thanks to dual CJS/ESM build.</p>
+<hr>
+<h2 id="🚀-usage" class="tsd-anchor-link">🚀 Usage<a href="#🚀-usage" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="basic-usage" class="tsd-anchor-link">Basic usage<a href="#basic-usage" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><pre><code class="ts"><span class="hl-3">import</span><span class="hl-1"> { </span><span class="hl-4">findUp</span><span class="hl-1"> } </span><span class="hl-3">from</span><span class="hl-1"> </span><span class="hl-2">&#39;@yukiakai/find-up&#39;</span><br/><br/><span class="hl-5">// Find &#39;package.json&#39; starting from current directory and walking upward</span><br/><span class="hl-6">const</span><span class="hl-1"> </span><span class="hl-7">path</span><span class="hl-1"> = </span><span class="hl-0">findUp</span><span class="hl-1">(</span><span class="hl-2">&#39;package.json&#39;</span><span class="hl-1">)</span><br/><span class="hl-4">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">(</span><span class="hl-4">path</span><span class="hl-1">)</span>
+</code><button type="button">Copy</button></pre>
+
+<h3 id="match-multiple-names" class="tsd-anchor-link">Match multiple names<a href="#match-multiple-names" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><pre><code class="ts"><span class="hl-0">findUp</span><span class="hl-1">([</span><span class="hl-2">&#39;pnpm-lock.yaml&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;yarn.lock&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;package-lock.json&#39;</span><span class="hl-1">])</span>
+</code><button type="button">Copy</button></pre>
+
+<h3 id="match-using-regexp" class="tsd-anchor-link">Match using RegExp<a href="#match-using-regexp" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><pre><code class="ts"><span class="hl-0">findUp</span><span class="hl-1">(</span><span class="hl-8">/</span><span class="hl-9">^</span><span class="hl-8">config</span><span class="hl-10">\.</span><span class="hl-8">.</span><span class="hl-11">*</span><span class="hl-10">\.</span><span class="hl-8">json</span><span class="hl-9">$</span><span class="hl-8">/</span><span class="hl-1">)</span>
+</code><button type="button">Copy</button></pre>
+
+<h3 id="match-folders-instead-of-files" class="tsd-anchor-link">Match folders instead of files<a href="#match-folders-instead-of-files" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><pre><code class="ts"><span class="hl-5">// Return full path including matched folder name</span><br/><span class="hl-0">findUp</span><span class="hl-1">([</span><span class="hl-2">&#39;node_modules&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;dist&#39;</span><span class="hl-1">], {</span><br/><span class="hl-1">  </span><span class="hl-4">type:</span><span class="hl-1"> </span><span class="hl-2">&#39;folder&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">includeMatchedPath:</span><span class="hl-1"> </span><span class="hl-6">true</span><br/><span class="hl-1">})</span><br/><span class="hl-5">// → /root/project/node_modules</span>
+</code><button type="button">Copy</button></pre>
+
+<h3 id="custom-matcher-callback" class="tsd-anchor-link">Custom matcher callback<a href="#custom-matcher-callback" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><pre><code class="ts"><span class="hl-3">import</span><span class="hl-1"> </span><span class="hl-4">fs</span><span class="hl-1"> </span><span class="hl-3">from</span><span class="hl-1"> </span><span class="hl-2">&#39;node:fs&#39;</span><br/><br/><span class="hl-0">findUp</span><span class="hl-1">(</span><span class="hl-2">&#39;config.json&#39;</span><span class="hl-1">, {</span><br/><span class="hl-1">  </span><span class="hl-0">matcher</span><span class="hl-4">:</span><span class="hl-1"> (</span><span class="hl-4">path</span><span class="hl-1">) </span><span class="hl-6">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-6">const</span><span class="hl-1"> </span><span class="hl-7">content</span><span class="hl-1"> = </span><span class="hl-4">fs</span><span class="hl-1">.</span><span class="hl-0">readFileSync</span><span class="hl-1">(</span><span class="hl-4">path</span><span class="hl-1">, </span><span class="hl-2">&#39;utf8&#39;</span><span class="hl-1">)</span><br/><span class="hl-1">	</span><span class="hl-5">// Return true to accept (stop searching), false to continue searching.</span><br/><span class="hl-1">    </span><span class="hl-3">return</span><span class="hl-1"> </span><span class="hl-6">true</span><br/><span class="hl-1">  }</span><br/><span class="hl-1">})</span>
+</code><button type="button">Copy</button></pre>
+
+<hr>
+<h2 id="🧠-api" class="tsd-anchor-link">🧠 API<a href="#🧠-api" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>See docs: <a href="https://yukiakai212.github.io/find-up/">https://yukiakai212.github.io/find-up/</a></p>
+<pre><code class="ts"><span class="hl-0">findUp</span><span class="hl-1">(</span><br/><span class="hl-1">  </span><span class="hl-4">name</span><span class="hl-1">: </span><span class="hl-4">string</span><span class="hl-1"> | </span><span class="hl-4">RegExp</span><span class="hl-1"> | (</span><span class="hl-4">string</span><span class="hl-1"> | </span><span class="hl-4">RegExp</span><span class="hl-1">)[],</span><br/><span class="hl-1">  </span><span class="hl-4">options</span><span class="hl-1">?: </span><span class="hl-4">FindUpOptions</span><br/><span class="hl-1">): </span><span class="hl-4">string</span><span class="hl-1"> | </span><span class="hl-6">undefined</span>
+</code><button type="button">Copy</button></pre>
+
+<h3 id="options" class="tsd-anchor-link">Options<a href="#options" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>basedir</code></td>
+<td><code>string</code></td>
+<td><code>process.cwd()</code></td>
+<td>Directory to start searching from</td>
+</tr>
+<tr>
+<td><code>matcher</code></td>
+<td><code>(path: string) =&gt; ()</code></td>
+<td>–</td>
+<td>Called when a matching file is found. Return false to skip.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>file | folder</code></td>
+<td><code>file</code></td>
+<td>Whether to match files or directories</td>
+</tr>
+<tr>
+<td><code>includeMatchedPath</code></td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>If <code>true</code>, returns full path including the matched name</td>
+</tr>
+<tr>
+<td><code>allowSymlinks</code></td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>Whether to allow matching symlinks</td>
+</tr>
+<tr>
+<td><code>stopAt</code></td>
+<td><code>string | string[]</code></td>
+<td>-</td>
+<td>Stop searching when encountering these folders</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="✅-features" class="tsd-anchor-link">✅ Features<a href="#✅-features" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li>✅ Supports both <strong>CommonJS</strong> and <strong>ESM</strong></li>
+<li>✅ Supports <code>string</code>, <code>string[]</code>, <code>RegExp</code>, <code>RegExp[]</code></li>
+<li>✅ Supports stop at</li>
+<li>✅ File or folder matching</li>
+<li>✅ Optional symlink filtering</li>
+<li>✅ <strong>Custom matcher callback</strong> — inspect file content, metadata, or path before accepting match</li>
+<li>✅ TypeScript types included</li>
+<li>✅ Optional: return full matched path (includeMatchedPath)</li>
+</ul>
+<hr>
+<h2 id="🧪-example-find-git-folder" class="tsd-anchor-link">🧪 Example: Find <code>.git</code> folder<a href="#🧪-example-find-git-folder" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><pre><code class="ts"><span class="hl-6">const</span><span class="hl-1"> </span><span class="hl-7">gitFolder</span><span class="hl-1"> = </span><span class="hl-0">findUp</span><span class="hl-1">(</span><span class="hl-2">&#39;.git&#39;</span><span class="hl-1">, { </span><span class="hl-4">type:</span><span class="hl-1"> </span><span class="hl-2">&#39;folder&#39;</span><span class="hl-1"> })</span><br/><span class="hl-3">if</span><span class="hl-1"> (</span><span class="hl-4">gitFolder</span><span class="hl-1">) {</span><br/><span class="hl-1">  </span><span class="hl-4">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">(</span><span class="hl-2">&#39;Found .git at:&#39;</span><span class="hl-1">, </span><span class="hl-4">gitFolder</span><span class="hl-1">)</span><br/><span class="hl-1">}</span>
+</code><button type="button">Copy</button></pre>
+
+<hr>
+<h2 id="🔍-comparison" class="tsd-anchor-link">🔍 Comparison<a href="#🔍-comparison" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>@yukiakai/find-up</th>
+<th>find-up</th>
+<th>findup-sync</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Supports CJS &amp; ESM</td>
+<td>✅</td>
+<td>❌ (ESM only)</td>
+<td>✅ (CJS only)</td>
+</tr>
+<tr>
+<td>Supports RegExp</td>
+<td>✅</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Supports array of names/patterns</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>File/folder type filtering</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Matcher can read file content</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Supports Symlinks</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Zero dependency</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="📦-changelog" class="tsd-anchor-link">📦 Changelog<a href="#📦-changelog" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>See full release notes in <a href="https://github.com/yukiakai212/find-up/blob/main/CHANGELOG.md">CHANGELOG.md</a></p>
+<hr>
+<h2 id="📜-license" class="tsd-anchor-link">📜 License<a href="#📜-license" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>MIT © <a href="https://github.com/yukiakai212">yukiakai</a></p>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#yukiakaifind-up"><span>@yukiakai/find-<wbr/>up</span></a><ul><li><a href="#📦-installation"><span>📦 <wbr/>Installation</span></a></li><li><a href="#🚀-usage"><span>🚀 <wbr/>Usage</span></a></li><li><ul><li><a href="#basic-usage"><span>Basic usage</span></a></li><li><a href="#match-multiple-names"><span>Match multiple names</span></a></li><li><a href="#match-using-regexp"><span>Match using <wbr/>Reg<wbr/>Exp</span></a></li><li><a href="#match-folders-instead-of-files"><span>Match folders instead of files</span></a></li><li><a href="#custom-matcher-callback"><span>Custom matcher callback</span></a></li></ul></li><li><a href="#🧠-api"><span>🧠 <wbr/>API</span></a></li><li><ul><li><a href="#options"><span>Options</span></a></li></ul></li><li><a href="#✅-features"><span>✅ <wbr/>Features</span></a></li><li><a href="#🧪-example-find-git-folder"><span>🧪 <wbr/>Example: <wbr/>Find .git folder</span></a></li><li><a href="#🔍-comparison"><span>🔍 <wbr/>Comparison</span></a></li><li><a href="#📦-changelog"><span>📦 <wbr/>Changelog</span></a></li><li><a href="#📜-license"><span>📜 <wbr/>License</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="modules.html">@yukiakai/find-up</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>
