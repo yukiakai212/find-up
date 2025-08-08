@@ -6,7 +6,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-	"types": "./dist/index.d.ts",
+    "types": "./dist/index.d.ts",
     "import": "./dist/index.js",
     "require": "./dist/index.cjs"
   },
@@ -15,7 +15,8 @@
     "format": "prettier --write **/*.{js,ts}",
     "format:check": "prettier --check **/*.{js,ts}",
     "lint": "eslint src/**/*.ts",
-    "build": "npx tsup"
+    "build": "npx tsup",
+    "docs": "npx typedoc"
   },
   "files": [
     "dist/*",
@@ -62,6 +63,7 @@
     "prettier": "^3.6.2",
     "tsup": "^8.5.0",
     "tsx": "^4.20.3",
+    "typedoc": "^0.28.9",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.35.1",
     "vitest": "^3.2.4"
