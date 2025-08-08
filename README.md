@@ -75,6 +75,8 @@ findUp('config.json', {
 
 ## 🧠 API
 
+See docs: [https://yukiakai212.github.io/find-up/](https://yukiakai212.github.io/find-up/)
+
 ```ts
 findUp(
   name: string | RegExp | (string | RegExp)[],
