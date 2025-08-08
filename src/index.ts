@@ -15,7 +15,7 @@ function matchName(
   target: string[],
   expect: string | RegExp,
   type: 'file' | 'folder',
-  allowSymlinks,
+  allowSymlinks: boolean,
 ): string | undefined {
   for (let name of target) {
     try {

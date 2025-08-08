@@ -3,7 +3,17 @@
     "module": "nodenext",     
     "moduleResolution": "nodenext", 
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true        
+    "allowSyntheticDefaultImports": true,
+	"forceConsistentCasingInFileNames": true,
+    "strict": true,
+	"strictPropertyInitialization": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "outDir": "dist",
+	"rootDir": "src",
+    "declaration": true,
+    "sourceMap": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
