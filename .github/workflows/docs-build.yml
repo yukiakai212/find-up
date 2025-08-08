@@ -48,7 +48,7 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git clone --branch docs --single-branch https://github.com/${{ github.repository }} docs-branch
+          git clone --branch docs --single-branch https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} docs-branch
 
       - name: Copy docs to latest folder
         run: |
