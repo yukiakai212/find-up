@@ -30,7 +30,7 @@ jobs:
         run: npm ci
 
       - name: Build docs
-        run: npm run docs  # output vào ./docs-dist
+        run: npm run docs  # output  ./docs
 
       - name: Determine version folders
         id: version
