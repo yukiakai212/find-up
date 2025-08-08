@@ -1,5 +1,11 @@
 # @yukiakai/find-up
 
+## 1.1.5
+
+### Patch Changes
+
+- 145a6b5: Fix: missing type of allowSymlinks
+
 ## 1.1.2
 
 ### Patch Changes
