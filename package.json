@@ -1,6 +1,6 @@
 {
   "name": "@yukiakai/find-up",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "A flexible find-up implementation supporting string, RegExp, CJS/ESM dual build, and custom matcher.",
   "type": "module",
   "main": "./dist/index.js",
