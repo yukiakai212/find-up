@@ -1,5 +1,11 @@
 # @yukiakai/find-up
 
+## 1.1.6
+
+### Patch Changes
+
+- 59d1adc: Security patch release
+
 ## 1.1.5
 
 ### Patch Changes
