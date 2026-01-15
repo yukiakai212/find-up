@@ -8,7 +8,7 @@
 
 Find the first file matching a given pattern in the current directory or the nearest ancestor directory, with support for **both CommonJS and ESM**, and extended matching capabilities including `RegExp`, symlink control, and custom matchers callback.
 
-> 💡 Useful for finding files or folders (like `package.json`, `.git`, or config files) by walking upward from a starting directory.
+> Useful for finding files or folders (like `package.json`, `.git`, or config files) by walking upward from a starting directory.
 
 ---
 
