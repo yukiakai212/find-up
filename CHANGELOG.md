@@ -1,5 +1,11 @@
 # @yukiakai/find-up
 
+## 1.1.7
+
+### Patch Changes
+
+- ad25a70: Update builder
+
 ## 1.1.6
 
 ### Patch Changes
