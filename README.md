@@ -12,7 +12,7 @@ Find the first file matching a given pattern in the current directory or the nea
 
 ---
 
-## 📦 Installation
+## Installation
 
 ```bash
 npm install @yukiakai/find-up
@@ -22,7 +22,7 @@ Works with both `require()` and `import` thanks to dual CJS/ESM build.
 
 ---
 
-## 🚀 Usage
+## Usage
 
 ### Basic usage
 
@@ -73,9 +73,9 @@ findUp('config.json', {
 
 ---
 
-## 🧠 API
+## API
 
-See docs: [https://yukiakai212.github.io/find-up/](https://yukiakai212.github.io/find-up/)
+See docs: [API Docs][api-docs-url]
 
 ```ts
 findUp(
@@ -97,7 +97,7 @@ findUp(
 
 ---
 
-## ✅ Features
+## Features
 
 - ✅ Supports both **CommonJS** and **ESM**
 - ✅ Supports `string`, `string[]`, `RegExp`, `RegExp[]`
@@ -112,7 +112,7 @@ findUp(
 
 ---
 
-## 🧪 Example: Find `.git` folder
+## Example: Find `.git` folder
 
 ```ts
 const gitFolder = findUp('.git', { type: 'folder' })
@@ -123,11 +123,11 @@ if (gitFolder) {
 
 ---
 
-## 🔍 Comparison
+## Comparison
 
 | Feature                            | @yukiakai/find-up | find-up       | findup-sync   |
 |------------------------------------|-------------------|---------------|---------------|
-| Supports CJS & ESM                 | ✅                | ❌ (ESM only) | ✅ (CJS only) |
+| Supports CJS & ESM                 | ✅                | ❌ (ESM only) | ❌ (CJS only) |
 | Supports RegExp                    | ✅                | ❌            | ✅            |
 | Supports array of names/patterns   | ✅                | ✅            | ✅            |
 | File/folder type filtering         | ✅                | ✅            | ❌            |
@@ -138,15 +138,17 @@ if (gitFolder) {
 
 ---
 
-## 📦 Changelog
+## Changelog
 
 See full release notes in [CHANGELOG.md][changelog-url]
 
 ---
 
-## 📜 License
+## License
 
 MIT © [yukiakai](https://github.com/yukiakai212)
+
+---
 
 [npm-downloads-image]: https://badgen.net/npm/dm/@yukiakai/find-up
 [npm-downloads-url]: https://www.npmjs.com/package/@yukiakai/find-up
@@ -157,3 +159,4 @@ MIT © [yukiakai](https://github.com/yukiakai212)
 [codecov-image]: https://codecov.io/gh/yukiakai212/find-up/branch/main/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/yukiakai212/find-up
 [changelog-url]: https://github.com/yukiakai212/find-up/blob/main/CHANGELOG.md
+[api-docs-url]: https://yukiakai212.github.io/find-up/
